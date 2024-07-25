@@ -1,0 +1,25 @@
+.custom-card{
+  min-height: 450px;
+}
+.custom-card .image-link{
+  min-height: 320px;
+  justify-content: center;
+  display: flex;
+}
+.card-image{
+max-height: 350px;
+}
+.custom-card .text{
+min-height: 130px;
+border-bottom-left-radius: .5rem;
+border-bottom-right-radius: .5rem;
+background: #f3f3f3;
+}
+.custom-card .text a{
+color:#333;
+text-decoration: none;
+}
+.custom-card .text a.button-card{
+background-color: #e82135 ;
+color: #FFF;
+}
