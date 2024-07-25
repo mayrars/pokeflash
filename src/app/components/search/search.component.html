@@ -1,0 +1,4 @@
+<form class="d-flex" [formGroup]="searchForm" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" (keydown)="searchByName($event)" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
