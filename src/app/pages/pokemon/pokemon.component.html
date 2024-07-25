@@ -1,0 +1,49 @@
+<div class="container mx-auto px-4 mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-12">
+      <div id="carouselExampleIndicators" class="carousel slide carousel-dark" >
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active d-flex justify-items-center">
+            @if(pokemon?.sprites?.other?.dream_world?.front_default!= null){
+                <img class="rounded-t-lg w-9/12" src="{{pokemon?.sprites?.other?.dream_world?.front_default}}" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" height="350" width="350" />
+            }
+          </div>
+          <div class="carousel-item">
+            @if(pokemon?.sprites?.back_default!= null){
+              <img class="rounded-t-lg w-9/12" src="{{pokemon?.sprites?.back_default}}" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" height="350" width="350" />
+            }
+          </div>
+          <div class="carousel-item">
+            @if(pokemon?.sprites?.back_shiny!= null){
+              <img class="rounded-t-lg w-9/12" src="{{pokemon?.sprites?.back_shiny}}" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" height="350" width="350" />
+            }
+          </div>
+          <div class="carousel-item">
+            @if(pokemon?.sprites?.back_shiny!= null){
+              <img class="rounded-t-lg w-9/12" src="{{pokemon?.sprites?.front_shiny }}" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" height="350" width="350" />
+            }
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12">
+      <h1 class="font-bold">{{pokemon?.name | titlecase}}</h1>
+      <p class="mt-2"><span class="font-semibold">Height:</span> {{pokemon?.height}} m</p>
+      <p class="mt-2"><span class="font-semibold">Weight:</span> {{pokemon?.weight}} kg</p>
+      <p class="mt-2"><strong>Habitat:</strong> {{specie?.habitat?.name | titlecase}}</p>
+    </div>
+  </div>
+</div>
