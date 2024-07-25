@@ -1,0 +1,25 @@
+<div class="container mx-auto px-4">
+  <h1 class="text-3xl font-bold mt-5 mb-5 text-center text-lime-700">Welcome to the Pokemon App</h1>
+  <div class="row flex justify-end mb-5">
+    <div class="col-4">
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Show
+        </a>
+        <ul class="dropdown-menu">
+          <a (click)="changeLimit(12)" class="dropdown-item" href="#">12</a>
+            <a (click)="changeLimit(24)" class="dropdown-item" href="#">24</a>
+            <a (click)="changeLimit(50)" class="dropdown-item" href="#">50</a>
+            <a (click)="changeLimit(100)" class="dropdown-item" href="#">100</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    @for (pokemon of pokemons?.results; track $index) {
+        <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="pokemon"/>
+    }@empty {
+        <p class="text-center text-2xl">No results found</p>
+    }
+  </div>
+</div>
