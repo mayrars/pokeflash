@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Pokemon } from '../../interfaces/pokemon.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PokemonService } from '../../services/pokemon.service';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon',
   standalone: true,
-  imports: [TitleCasePipe],
+  imports: [TitleCasePipe, RouterLink],
   templateUrl: './pokemon.component.html',
   styleUrl: './pokemon.component.scss'
 })
