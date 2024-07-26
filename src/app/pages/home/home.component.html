@@ -19,7 +19,7 @@
     @for (pokemon of pokemons?.results; track $index) {
         <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="pokemon"/>
     }@empty {
-        <p class="text-center text-2xl">No results found</p>
+        <p class="text-center text-2xl">Loading...</p>
     }
   </div>
 </div>
