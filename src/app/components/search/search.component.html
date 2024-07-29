@@ -2,10 +2,18 @@
   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" (keydown)="searchByName($event)" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}">
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
+<div class="list-group position-absolute results" [ngClass]="{'d-block': searchResults!=undefined}" #searchResultsContainer>
+  @for (item of searchResults; track $index) {
+
+    <a class="list-group-item list-group-item-action">{{item.name}}</a>
+  }@empty {
+    <p>Loading...</p>
+  }
+</div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" #exampleModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

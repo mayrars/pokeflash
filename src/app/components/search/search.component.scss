@@ -1,3 +1,10 @@
 .inline-form{
   display: flex;
 }
+.results{
+  z-index: 50;
+  min-width:275px;
+  height: 275px;
+  overflow-y: auto;
+  display: none;
+}

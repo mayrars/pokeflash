@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Pokemon } from '../../interfaces/pokemon.interface';
-import { Pokemons } from '../../interfaces/pokemons.interface';
+import { Pokemons, Result } from '../../interfaces/pokemons.interface';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PokemonService } from '../../services/pokemon.service';
 import { NgClass } from '@angular/common';
@@ -13,12 +13,22 @@ import bootstrap from '../../../main.server';
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
-export class SearchComponent{
+export class SearchComponent implements OnInit{
   searchForm!: FormGroup
-  @ViewChild("#exampleModal") modal?: ElementRef;
-  constructor(private formBuilder: FormBuilder) {
+  pokemons?:Pokemons;
+  searchResults?:Result[]
+  @ViewChild("exampleModal") modal?: ElementRef;
+  @ViewChild("Results") results!:ElementRef
+  constructor(private apiService: PokemonService, private formBuilder: FormBuilder) {
     this.searchForm= this.formBuilder.group({
       search: ['',[Validators.required,Validators.minLength(3)]]
+    })
+  }
+  ngOnInit(): void {
+    this.apiService.getPokemons(100000,0).subscribe({
+      next: (data) => {
+        this.pokemons = data
+      }
     })
   }
   searchByName(event:any){
@@ -26,7 +36,8 @@ export class SearchComponent{
     if(value==null || value==''){
       this.modal
     }else{
-
+      this.searchResults= this.pokemons?.results?.filter(pokemon => pokemon.name.includes(value))
+      console.log(this.searchResults)
     }
   }
   hasErrors(controlName: string,errorType: string){
