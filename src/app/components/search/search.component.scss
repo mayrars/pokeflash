@@ -3,8 +3,14 @@
 }
 .results{
   z-index: 50;
-  min-width:275px;
+  width:275px;
   height: 275px;
   overflow-y: auto;
+  overflow-x: hidden;
   display: none;
+  background-color: #FFF;
+  padding: 15px;
+}
+.loading{
+  background-color: #fff;
 }

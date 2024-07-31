@@ -1,13 +1,16 @@
 <form class="d-flex" [formGroup]="searchForm" role="search">
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" (keydown)="searchByName($event)" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}">
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
-<div class="list-group position-absolute results" [ngClass]="{'d-block': searchResults!=undefined}" #searchResultsContainer>
-  @for (item of searchResults; track $index) {
-
-    <a class="list-group-item list-group-item-action">{{item.name}}</a>
+<div class="list-group position-absolute results" [ngClass]="{'d-block': searchResults!=undefined, 'd-none':searchResults?.length==0}" #searchResultsContainer>
+  @for (result of searchResults; track $index) {
+    <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="result" [position]="position"/>
   }@empty {
-    <p>Loading...</p>
+    <div class="loading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   }
 </div>
 
