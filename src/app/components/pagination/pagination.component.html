@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center mt-5">
+  <nav aria-label="Pagination">
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a href="javascript:void(0)" class="page-link" (click)="pageClicked(currentPage-1)">Previous</a>
+      </li>
+      @for (page of pages; track $index) {
+        @if($index<10){
+          <li class="page-item">
+            <a href="javascript:void(0)" class="page-link" (click)="pageClicked(page)" [ngClass]="{'active': page===currentPage}">{{page}}</a>
+          </li>
+        }
+      }
+      <li class="page-item">
+        <a class="page-link" (click)="pageClicked(currentPage+1)" href="javascript:void(0)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
