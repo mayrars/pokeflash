@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit{
     })
     effect(() => {
       this.searchForm.valueChanges.pipe(debounceTime(500)).subscribe((value) =>{
+        this.searchResults = []
         this.searchByName(value.search)
       })
     })
@@ -44,6 +45,7 @@ export class SearchComponent implements OnInit{
     })
   }
   searchByName(name:string){
+    this.searchResults = []
     if(name==null || name==''){
       this.modal?.nativeElement.classList.add('show')
     }else{
@@ -52,5 +54,9 @@ export class SearchComponent implements OnInit{
   }
   hasErrors(controlName: string,errorType: string){
     return this.searchForm.get(controlName)?.hasError(errorType) && this.searchForm.get(controlName)?.touched
+  }
+  hideBox(){
+    this.searchResults = []
+    this.searchForm.reset()
   }
 }

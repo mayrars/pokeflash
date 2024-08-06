@@ -1,5 +1,5 @@
 <form class="d-flex" [formGroup]="searchForm" role="search">
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" (focusout)="hideBox()" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}">
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 <div class="list-group position-absolute results" [ngClass]="{'d-block': searchResults!=undefined, 'd-none':searchResults?.length==0}" #searchResultsContainer>
