@@ -7,10 +7,10 @@
           Show
         </a>
         <ul class="dropdown-menu">
-          <a (click)="changeLimit(12)" class="dropdown-item" href="#">12</a>
-            <a (click)="changeLimit(24)" class="dropdown-item" href="#">24</a>
-            <a (click)="changeLimit(50)" class="dropdown-item" href="#">50</a>
-            <a (click)="changeLimit(100)" class="dropdown-item" href="#">100</a>
+          <a (click)="changeLimit(12)" class="dropdown-item"  [ngClass]="{'active': limit==12}" href="#">12</a>
+          <a (click)="changeLimit(24)" class="dropdown-item active" [ngClass]="{'active': limit===24}" href="#">24</a>
+          <a (click)="changeLimit(50)" class="dropdown-item" [ngClass]="{'active': limit==50}" href="#">50</a>
+          <a (click)="changeLimit(100)" class="dropdown-item" [ngClass]="{'active': limit==100}" href="#">100</a>
         </ul>
       </div>
     </div>
@@ -29,7 +29,7 @@
       <app-pagination
           [totalItems]="totalResults"
           [currentPage]="currentPage"
-          [itemsPerPage]="20"
+          [itemsPerPage]="limit"
           (OnClick)="changePage($event)"
       ></app-pagination>
     }
