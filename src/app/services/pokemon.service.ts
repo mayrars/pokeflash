@@ -14,7 +14,6 @@ export class PokemonService {
   getPokemons(limit:number=24, offset:number=0):Observable<Pokemons | undefined>{
     return this.http.get<Pokemons>(`${this.url}pokemon?limit=${limit}&offset=${offset}`).pipe(
       catchError((error)=>{
-        console.log(error);
         return of(undefined)
       })
     )
@@ -22,7 +21,6 @@ export class PokemonService {
   getSpeciesPokemon(link:string):Observable<Pokemon | undefined>{
     return this.http.get<Pokemon>(link).pipe(
       catchError((error)=>{
-        console.log(error);
         return of(undefined)
       })
     )
@@ -30,7 +28,6 @@ export class PokemonService {
   getPokemon(name: string):Observable<Pokemon | undefined>{
     return this.http.get<Pokemon>(`${this.url}pokemon/${name}`).pipe(
       catchError((error)=>{
-        console.log(error);
         return of(undefined)
       })
     )
@@ -38,7 +35,6 @@ export class PokemonService {
   getSpecies(name: string | undefined):Observable<Specie | undefined>{
     return this.http.get<Specie>(`${this.url}pokemon-species/${name}`).pipe(
       catchError((error)=>{
-        console.log(error);
         return of(undefined)
       })
     )
