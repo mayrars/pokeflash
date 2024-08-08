@@ -1,30 +1,33 @@
 <div class="container mx-auto px-4">
   <h1 class="text-3xl font-bold mt-5 mb-5 text-center text-lime-700 title">Welcome to the Pokemon App</h1>
-  <div class="row flex justify-end mb-5 principal-container" #container>
+  <div class="row d-flex justify-content-between mb-5 principal-container" #container>
     <div class="col-4">
-      <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Show
-        </a>
-        <ul class="dropdown-menu">
-          <a (click)="changeLimit(12)" class="dropdown-item"  [ngClass]="{'active': limit==12}" href="#">12</a>
-          <a (click)="changeLimit(24)" class="dropdown-item active" [ngClass]="{'active': limit===24}" href="#">24</a>
-          <a (click)="changeLimit(50)" class="dropdown-item" [ngClass]="{'active': limit==50}" href="#">50</a>
-          <a (click)="changeLimit(100)" class="dropdown-item" [ngClass]="{'active': limit==100}" href="#">100</a>
-        </ul>
+      <span class="fw-bold">Show: </span><br>
+      <div class="btn-group">
+        <a href="#"(click)="changeLimit(12)" class="btn button-blue" [ngClass]="{'active': limit==12}" aria-current="page">12</a>
+        <a (click)="changeLimit(24)" class="btn button-blue active" [ngClass]="{'active': limit===24}" aria-current="page" href="#">24</a>
+        <a (click)="changeLimit(50)" class="btn button-blue" [ngClass]="{'active': limit==50}" aria-current="page" href="#">50</a>
+        <a (click)="changeLimit(100)" class="btn button-blue" [ngClass]="{'active': limit==100}" aria-current="page" href="#">100</a>
+      </div>
+    </div>
+    <div class="col-4">
+      <span class="fw-bold">Sort by: </span><br>
+      <div class="btn-group">
       </div>
     </div>
   </div>
-  <div class="row">
-    @for (pokemon of pokemons?.results; track $index) {
-        <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="pokemon"/>
-    }@empty {
-      <div class="col-12 d-flex justify-content-center">
-        <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
-          <span class="visually-hidden">Loading...</span>
+  @defer {
+    <div class="row">
+      @for (pokemon of pokemons?.results; track $index) {
+          <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="pokemon"/>
+      }@empty {
+        <div class="col-12 d-flex justify-content-center">
+          <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
-      </div>
-    }
+      }
+    </div>
     @if(pokemons?.results){
       <app-pagination
           [totalItems]="totalResults"
@@ -33,5 +36,16 @@
           (OnClick)="changePage($event)"
       ></app-pagination>
     }
-  </div>
+  } @placeholder (minimum 500ms) {
+    <div class="row">
+      <app-skeleton
+        class="col-12"
+        [count]="24"
+        [theme]="[
+          { width: '20px' },
+          { width: '60%' },
+          { width: '70%' }
+        ]"/>
+    </div>
+  }
 </div>

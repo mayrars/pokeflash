@@ -4,11 +4,12 @@ import { PokemonService } from '../../services/pokemon.service';
 import { CardComponent } from '../../components/card/card.component';
 import { PaginationComponent } from "../../components/pagination/pagination.component";
 import { NgClass } from '@angular/common';
+import { SkeletonComponent } from "../../components/skeleton/skeleton.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardComponent, PaginationComponent, NgClass],
+  imports: [CardComponent, PaginationComponent, NgClass, SkeletonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
