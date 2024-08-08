@@ -33,6 +33,8 @@ export class SearchComponent implements OnInit{
     effect(() => {
       this.searchForm.valueChanges.pipe(debounceTime(500)).subscribe((value) =>{
         this.searchResults = []
+        if(value.search==null || value.search=='')
+          this.hideBox()
         this.searchByName(value.search)
       })
     })

@@ -1,10 +1,11 @@
 <form class="d-flex" [formGroup]="searchForm" role="search">
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" (focusout)="hideBox()" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}">
-  <button class="btn btn-outline-success" type="submit">Search</button>
+  <input class="form-control me-1" type="search" placeholder="Pokemon name..." aria-label="Search" name="search" id="search" formControlName="search" required  [ngClass]="{'is-invalid': hasErrors('search','required') || hasErrors('search','minlength')}" autocomplete="off">
+  <button class="btn button-blue" type="submit">Search</button>
 </form>
 <div class="list-group position-absolute results" [ngClass]="{'d-block': searchResults!=undefined, 'd-none':searchResults?.length==0}" #searchResultsContainer>
+  <div class="d-flex justify-content-end content-btn"><button type="button" class="btn-close" aria-label="Close" (click)="hideBox()"></button></div>
   @for (result of searchResults; track $index) {
-    <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="result" [position]="position"/>
+    <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="result" [position]="position" (click)="hideBox()"/>
   }@empty {
     <div class="loading">
       <div class="spinner-border" role="status">
