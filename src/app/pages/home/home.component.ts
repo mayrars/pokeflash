@@ -14,7 +14,7 @@ import { SkeletonComponent } from "../../components/skeleton/skeleton.component"
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
-  pokemons?: Pokemons = {count: 0, next: '', previus: '', results: []}
+  pokemons?: Pokemons = {} as Pokemons;
   totalPages?: number;
   currentPage:number=1;
   itemsPerPage:number=24;

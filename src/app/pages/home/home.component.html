@@ -10,10 +10,15 @@
         <a (click)="changeLimit(100)" class="btn button-blue" [ngClass]="{'active': limit==100}" aria-current="page" href="#">100</a>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-3">
       <span class="fw-bold">Sort by: </span><br>
-      <div class="btn-group">
-      </div>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Select an option</option>
+        <option value="1">Name ASC</option>
+        <option value="2">Name DESC</option>
+        <option value="3">ID ASC</option>
+        <option value="4">ID DESC</option>
+      </select>
     </div>
   </div>
   @defer {
