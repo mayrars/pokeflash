@@ -20,7 +20,7 @@ templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit{
   searchForm!: FormGroup
-  pokemons?:Pokemons;
+  pokemons?:Pokemons={} as Pokemons;
   searchResults?:any[]=[]
   @ViewChild("exampleModal") modal?: ElementRef;
   @ViewChild("Results") results!:ElementRef
@@ -31,11 +31,15 @@ export class SearchComponent implements OnInit{
       search: ['',[Validators.required,Validators.minLength(3)]]
     })
     effect(() => {
-      this.searchForm.valueChanges.pipe(debounceTime(500)).subscribe((value) =>{
+      console.log(this.searchForm.value)
+      this.searchForm.valueChanges.pipe(debounceTime(400)).subscribe((value) =>{
         this.searchResults = []
         if(value.search==null || value.search=='')
           this.hideBox()
-        this.searchByName(value.search)
+        else if(value.search.length>=3)
+          this.searchByName(value.search)
+        else
+          this.searchResults = []
       })
     })
   }
