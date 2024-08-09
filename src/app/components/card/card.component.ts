@@ -14,11 +14,12 @@ import { RouterLink } from '@angular/router';
 export class CardComponent implements OnInit{
   @Input() poke: any;
   @Input() position: string='';
-  pokemon?:Pokemon;
+  pokemon?: Pokemon = {} as Pokemon;
   constructor( private apiService: PokemonService){}
   ngOnInit(): void {
     this.apiService.getSpeciesPokemon(this.poke.url).subscribe(
-        (data) => {
+      (data) => {
+          this.pokemon = {} as Pokemon;
           this.pokemon = data
         }
     )
