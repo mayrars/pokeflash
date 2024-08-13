@@ -1,0 +1,10 @@
+<div class="row horizontal-card">
+  <div class="col-4">
+    <img class="rounded-t-lg" src="{{poke?.pokemon.sprites?.other?.dream_world?.front_default!=null ? poke?.pokemon.sprites?.other?.dream_world?.front_default : poke?.pokemon.sprites?.other?.home?.front_default ? poke?.pokemon.sprites?.other?.home?.front_default: poke?.pokemon.sprites?.front_default}}" height="80" width="80" class="w-100 image" alt="{{poke.name | titlecase}}" />
+  </div>
+  <div class="col-8">
+    <a routerLink="/pokemon/{{poke.name}}" class="link-result">
+      <h5 class="card-title">{{poke.name | titlecase}}</h5>
+    </a>
+  </div>
+</div>
