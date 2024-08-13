@@ -56,6 +56,13 @@ export class SearchComponent implements OnInit{
       this.modal?.nativeElement.classList.add('show')
     }else{
       this.searchResults= this.pokemons?.results?.filter(pokemon => pokemon?.name?.includes(name))
+      this.searchResults = this.searchResults?.reduce((acc,item) => {
+        let image = this.apiService.getSpeciesPokemon(item.url).subscribe(data=>{
+          return data?.sprites
+        })
+        return acc.concat({...item,image: image})
+      },[])
+      console.log(this.searchResults)
     }
   }
   hasErrors(controlName: string,errorType: string){
