@@ -5,6 +5,7 @@
   min-height: 320px;
   justify-content: center;
   display: flex;
+  align-items: center;
 }
 .card-image{
 max-height: 350px;
@@ -34,7 +35,7 @@ text-decoration: none;
   border-bottom:1px solid #f3f3f3;
   padding-bottom: 15px;
   padding-top: 15px;
-  & .link-result{
-    text-decoration: none;
-  }
+}
+.link-result{
+  text-decoration: none;
 }
