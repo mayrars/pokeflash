@@ -16,3 +16,16 @@
   font-family: "Lilita One", sans-serif;
   line-height: 1.5rem;
 }
+.navbar-nav {
+  &.navbar-nav{
+    & a{
+      color: #fff;
+      &.nav-link.active{
+        color: #3b4cca;
+        text-decoration: underline;
+      }
+    }
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+}

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +9,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
-
+export class HeaderComponent implements OnInit{
+  private _route = inject(ActivatedRoute)
+  ngOnInit(): void {
+    this._route.params.subscribe({
+      next: (params) => {
+      }
+    })
+  }
 }
