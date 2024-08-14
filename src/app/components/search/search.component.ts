@@ -31,7 +31,6 @@ export class SearchComponent implements OnInit{
       search: ['',[Validators.required,Validators.minLength(3)]]
     })
     effect(() => {
-      console.log(this.searchForm.value)
       this.searchForm.valueChanges.pipe(debounceTime(400)).subscribe((value) =>{
         this.searchResults = []
         if(value.search==null || value.search=='')
@@ -56,13 +55,6 @@ export class SearchComponent implements OnInit{
       this.modal?.nativeElement.classList.add('show')
     }else{
       this.searchResults= this.pokemons?.results?.filter(pokemon => pokemon?.name?.includes(name))
-      this.searchResults = this.searchResults?.reduce((acc,item) => {
-        let image = this.apiService.getSpeciesPokemon(item.url).subscribe(data=>{
-          return data?.sprites
-        })
-        return acc.concat({...item,image: image})
-      },[])
-      console.log(this.searchResults)
     }
   }
   hasErrors(controlName: string,errorType: string){
