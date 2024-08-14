@@ -11,20 +11,20 @@
       </div>
     </div>
     <div class="col-3">
-      <span class="fw-bold">Sort by: </span><br>
+      <!--<span class="fw-bold">Sort by: </span><br>
       <select class="form-select" aria-label="Default select example">
         <option selected>Select an option</option>
         <option value="1">Name ASC</option>
         <option value="2">Name DESC</option>
         <option value="3">ID ASC</option>
         <option value="4">ID DESC</option>
-      </select>
+      </select>-->
     </div>
   </div>
   @defer {
     <div class="row">
       @for (pokemon of pokemons?.results; track $index) {
-          <app-card class="col-lg-4 col-md-4 col-2 mb-4" [poke]="pokemon"/>
+          <app-card class="col-lg-4 col-md-4 col-12 mb-4" [poke]="pokemon"/>
       }@empty {
         <div class="col-12 d-flex justify-content-center">
           <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
