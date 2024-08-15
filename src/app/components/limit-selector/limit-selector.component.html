@@ -1,0 +1,7 @@
+<span class="fw-bold">Show: </span><br>
+<div class="btn-group">
+  <a (click)="changeLimit(12)" class="btn button-blue" [ngClass]="{'active': limit==12}" aria-current="page">12</a>
+  <a (click)="changeLimit(24)" class="btn button-blue active" [ngClass]="{'active': limit===24}" aria-current="page">24</a>
+  <a (click)="changeLimit(50)" class="btn button-blue" [ngClass]="{'active': limit==50}" aria-current="page">50</a>
+  <a (click)="changeLimit(100)" class="btn button-blue" [ngClass]="{'active': limit==100}" aria-current="page">100</a>
+</div>
