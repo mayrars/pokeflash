@@ -4,6 +4,7 @@ import { catchError, Observable, of } from 'rxjs';
 import { Pokemon } from '../interfaces/pokemon.interface';
 import { Pokemons } from '../interfaces/pokemons.interface';
 import { Specie } from '../interfaces/specie.interface';
+import { Berry } from '../interfaces/berry.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,13 @@ export class PokemonService {
   constructor(private http:HttpClient) { }
   getPokemons(limit:number=24, offset:number=0):Observable<Pokemons | undefined>{
     return this.http.get<Pokemons>(`${this.url}pokemon?limit=${limit}&offset=${offset}`).pipe(
+      catchError((error)=>{
+        return of(undefined)
+      })
+    )
+  }
+  getBerry(limit:number=24, offset:number=0):Observable<Berry | undefined>{
+    return this.http.get<Pokemons>(`${this.url}berry?limit=${limit}&offset=${offset}`).pipe(
       catchError((error)=>{
         return of(undefined)
       })
