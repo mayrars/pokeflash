@@ -5,11 +5,12 @@ import { CardComponent } from '../../components/card/card.component';
 import { PaginationComponent } from "../../components/pagination/pagination.component";
 import { NgClass } from '@angular/common';
 import { SkeletonComponent } from "../../components/skeleton/skeleton.component";
+import { LimitSelectorComponent } from '../../components/limit-selector/limit-selector.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardComponent, PaginationComponent, NgClass, SkeletonComponent],
+  imports: [CardComponent, PaginationComponent, NgClass, SkeletonComponent, LimitSelectorComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -19,8 +20,8 @@ export class HomeComponent implements OnInit{
   currentPage:number=1;
   itemsPerPage:number=24;
   totalResults: number | undefined = 0;
-  limit?: number = 24;
-  offset?: number = 0;
+  limit: number = 24;
+  offset: number = 0;
   constructor( private apiService: PokemonService){}
   ngOnInit(): void {
     //get first 24 pokemons

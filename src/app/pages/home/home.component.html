@@ -2,13 +2,7 @@
   <h1 class="text-3xl font-bold mt-5 mb-5 text-center text-lime-700 title">Welcome to the Pokemon App</h1>
   <div class="row d-flex justify-content-between mb-5 principal-container" #container>
     <div class="col-4">
-      <span class="fw-bold">Show: </span><br>
-      <div class="btn-group">
-        <a href="#"(click)="changeLimit(12)" class="btn button-blue" [ngClass]="{'active': limit==12}" aria-current="page">12</a>
-        <a (click)="changeLimit(24)" class="btn button-blue active" [ngClass]="{'active': limit===24}" aria-current="page" href="#">24</a>
-        <a (click)="changeLimit(50)" class="btn button-blue" [ngClass]="{'active': limit==50}" aria-current="page" href="#">50</a>
-        <a (click)="changeLimit(100)" class="btn button-blue" [ngClass]="{'active': limit==100}" aria-current="page" href="#">100</a>
-      </div>
+      <app-limit-selector [limit]="limit" (OnClick)="changeLimit($event)"/>
     </div>
     <div class="col-3">
       <!--<span class="fw-bold">Sort by: </span><br>
