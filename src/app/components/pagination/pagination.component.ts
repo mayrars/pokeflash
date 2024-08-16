@@ -14,6 +14,7 @@ export class PaginationComponent implements OnInit, OnChanges{
   @Input() currentPage: any;
   @Input() itemsPerPage: any;
   @Input() categoryId: any;
+  @Input() visiblePages?: number;
   @Output() OnClick: EventEmitter<number> = new EventEmitter();
 
   totalPages = 0
