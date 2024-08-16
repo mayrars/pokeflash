@@ -22,14 +22,17 @@ export class HomeComponent implements OnInit{
   totalResults: number | undefined = 0;
   limit: number = 24;
   offset: number = 0;
+  loading:boolean = false;
   constructor( private apiService: PokemonService){}
   ngOnInit(): void {
     //get first 24 pokemons
+    this.loading = false;
     this.apiService.getPokemons(this.limit, this.offset).subscribe(
       (data) => {
         this.totalResults =data?.count;
         this.totalPages = data?.count!=undefined ? Math.ceil(data?.count/this.itemsPerPage) : 0;
         this.pokemons = data
+        this.loading = true;
       }
    )
   }
@@ -38,6 +41,7 @@ export class HomeComponent implements OnInit{
     this.itemsPerPage = limit
     this.limit = limit
     this.offset =  this.limit!=undefined ? (this.currentPage*this.limit)+1 : 0
+    this.loading = false
     this.apiService.getPokemons(limit, this.offset=0).subscribe({
       next: (data) => {
         this.currentPage=1
@@ -45,6 +49,7 @@ export class HomeComponent implements OnInit{
         this.totalResults =data?.count;
         this.totalPages = data?.count!=undefined ? Math.ceil(data?.count/this.itemsPerPage) : 0;
         this.pokemons = data
+        this.loading = true;
       }
     }
    )
@@ -52,11 +57,13 @@ export class HomeComponent implements OnInit{
   changePage(page:number){
     this.pokemons = {count: 0, next: '', previus: '', results: []}
     const newOffset = this.limit!=undefined ? ((page-1)*this.limit)+1 : 0
+    this.loading= false
     this.apiService.getPokemons(this.limit, newOffset).subscribe(data=>{
       this.currentPage =page;
       this.totalPages = data?.count!=undefined ? Math.ceil(data?.count/this.itemsPerPage) : 0;
       this.totalResults = data?.count;
       this.pokemons = data
+      this.loading = true;
     })
   }
 }

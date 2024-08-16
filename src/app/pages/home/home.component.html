@@ -27,15 +27,16 @@
         </div>
       }
     </div>
-    @if(pokemons?.results){
+    @if(pokemons?.results && loading){
       <app-pagination
           [totalItems]="totalResults"
           [currentPage]="currentPage"
           [itemsPerPage]="limit"
+          [visiblePages]="10"
           (OnClick)="changePage($event)"
       ></app-pagination>
     }
-  } @placeholder (minimum 500ms) {
+  } @placeholder (minimum 300ms) {
     <div class="row">
       <app-skeleton
         class="col-12"
